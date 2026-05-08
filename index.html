@@ -7,16 +7,298 @@
         <meta name="author" content="" />
         <title>Milan Tripković - Resume</title>
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
+
+        <style>
+        /* ── PROJECT CARDS ── */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .project-card {
+            position: relative;
+            cursor: pointer;
+            border-radius: 14px;
+            padding: 2px;
+            background: linear-gradient(135deg, #bd5d38, #c47d56, #d4956e);
+            background-size: 200% 200%;
+            animation: gradShift 8s ease infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+
+        .project-card:nth-child(2) {
+            background: linear-gradient(135deg, #bd5d38, #a04e2f, #7c3b22);
+            animation-delay: -2.5s;
+        }
+        .project-card:nth-child(3) {
+            background: linear-gradient(135deg, #a04e2f, #bd5d38, #c47d56);
+            animation-delay: -5s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(189, 93, 56, 0.2);
+            text-decoration: none;
+        }
+
+        @keyframes gradShift {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card-inner {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-inner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at top left, rgba(189,93,56,0.04), transparent 60%);
+            pointer-events: none;
+        }
+
+        .card-year {
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #adb5bd;
+            font-family: 'Saira Extra Condensed', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-family: 'Saira Extra Condensed', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #343a40;
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: #6c757d;
+            line-height: 1.65;
+            flex: 1;
+            margin-bottom: 1rem;
+            font-family: Muli, sans-serif;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .card-tag {
+            font-size: 10px;
+            font-weight: 700;
+            font-family: 'Saira Extra Condensed', sans-serif;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 100px;
+            background: rgba(189,93,56,0.1);
+            color: #bd5d38;
+            border: 0.5px solid rgba(189,93,56,0.25);
+        }
+
+        .card-cta {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #bd5d38;
+            font-family: 'Saira Extra Condensed', sans-serif;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .cta-arrow {
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            background: #bd5d38;
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.2s ease;
+        }
+        .project-card:hover .cta-arrow { transform: translateX(3px); }
+
+        /* ── MODAL ── */
+        .proj-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(52, 58, 64, 0.7);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        .proj-modal-overlay.active { display: flex; animation: mfadeIn 0.2s ease; }
+
+        @keyframes mfadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes mslideUp { from { transform: translateY(24px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .proj-modal {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: mslideUp 0.3s ease;
+            position: relative;
+        }
+
+        .proj-modal::-webkit-scrollbar { width: 4px; }
+        .proj-modal::-webkit-scrollbar-thumb { background: #dee2e6; border-radius: 2px; }
+
+        .modal-grad-bar {
+            height: 4px;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .proj-modal-body { padding: 1.75rem 2rem 2.25rem; }
+
+        .proj-modal-close {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            width: 34px; height: 34px;
+            border-radius: 50%;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            color: #6c757d;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.15s, color 0.15s;
+            line-height: 1;
+        }
+        .proj-modal-close:hover { background: #e9ecef; color: #343a40; }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 6px;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 16/7;
+        }
+
+        .gallery-main { background: #f8f9fa; border-radius: 8px 0 0 8px; overflow: hidden; border: 1px solid #e9ecef; }
+        .gallery-side { display: flex; flex-direction: column; gap: 6px; }
+        .gallery-thumb { flex: 1; background: #f8f9fa; border-radius: 4px; overflow: hidden; border: 1px solid #e9ecef; }
+
+        .gallery-placeholder {
+            width: 100%; height: 100%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 6px; color: #adb5bd; font-size: 11px;
+            font-family: Muli, sans-serif; letter-spacing: 0.04em;
+            text-align: center; padding: 0.75rem;
+        }
+
+        .gallery-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .modal-year-lbl {
+            font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+            color: #adb5bd; font-family: 'Saira Extra Condensed', sans-serif; margin-bottom: 0.3rem;
+        }
+
+        .modal-title {
+            font-family: 'Saira Extra Condensed', sans-serif;
+            font-size: 2rem; font-weight: 700;
+            color: #343a40; margin-bottom: 0.5rem; line-height: 1.1;
+        }
+
+        .modal-desc {
+            font-size: 14px; color: #6c757d; line-height: 1.7;
+            margin-bottom: 1.3rem; font-family: Muli, sans-serif;
+        }
+
+        .modal-sec-label {
+            font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+            color: #adb5bd; font-family: 'Saira Extra Condensed', sans-serif;
+            margin-bottom: 0.55rem; font-weight: 700;
+        }
+
+        .modal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.2rem; }
+
+        .modal-tag {
+            font-size: 11px; padding: 4px 12px; border-radius: 100px;
+            background: #f8f9fa; color: #495057;
+            border: 1px solid #dee2e6;
+            font-family: 'Saira Extra Condensed', sans-serif;
+            letter-spacing: 0.05em; font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .modal-highlights { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+
+        .modal-highlights li {
+            font-size: 13.5px; color: #6c757d; line-height: 1.65;
+            padding: 0.4rem 0 0.4rem 1.1rem; position: relative;
+            border-bottom: 1px solid #f1f3f5;
+            font-family: Muli, sans-serif;
+        }
+        .modal-highlights li:last-child { border-bottom: none; }
+        .modal-highlights li::before {
+            content: '›'; position: absolute; left: 0;
+            color: #bd5d38; font-size: 16px; top: 0.25rem; font-weight: 700;
+        }
+
+        .modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        .btn-proj-ghost {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 9px 18px; border-radius: 8px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            color: #495057; font-size: 13px; font-weight: 700;
+            font-family: 'Saira Extra Condensed', sans-serif;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            text-decoration: none; cursor: pointer;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .btn-proj-ghost:hover { background: #e9ecef; border-color: #ced4da; color: #343a40; text-decoration: none; }
+
+        .btn-proj-close {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 9px 18px; border-radius: 8px;
+            background: #bd5d38;
+            border: none; color: white; font-size: 13px; font-weight: 700;
+            font-family: 'Saira Extra Condensed', sans-serif;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            cursor: pointer; transition: background 0.15s;
+        }
+        .btn-proj-close:hover { background: #a04e2f; }
+        </style>
     </head>
     <body id="page-top">
-        <!-- Navigation-->
+        <!-- Navigation (unchanged) -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg-none">Milan Tripković</span>
@@ -34,117 +316,144 @@
                 </ul>
             </div>
         </nav>
-        <!-- Page Content-->
+
         <div class="container-fluid p-0">
-            <!-- About-->
+
+            <!-- About (unchanged) -->
             <section class="resume-section" id="about">
                 <div class="resume-section-content">
-                    <h1 class="mb-0">
-                        Milan
-                        <span class="text-primary">Tripkovic</span>
-                    </h1>
+                    <h1 class="mb-0">Milan <span class="text-primary">Tripkovic</span></h1>
                     <div class="subheading mb-5">
                         +381 61-575-7777 · 
                         <a href="mailto:milantripkovicposlovni@gmail.com">milantripkovicposlovni@gmail.com</a>
                     </div>
-                    <p class="lead mb-5">Student at the Faculty of Technical Sciences in Novi Sad, specializing in Applied Software Engineering. Passionate about practical projects that improve both technical and teamwork skills. Open to internships to gain hands-on experience and contribute to innovative solutions.</p>
+                    <p class="lead mb-5">Student at the Faculty of Technical Sciences in Novi Sad, specializing in Applied Software Engineering. Passionate about practical projects that improve both technical and teamwork skills. Open for work to gain hands-on experience and contribute to innovative solutions.</p>
                     <div class="social-icons">
-                        <a class="social-icon" href="https://linkedin.com/in/milan-tripkovic"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="social-icon" href="https://www.linkedin.com/in/milan-tripkovic-66b66832b?"><i class="fab fa-linkedin-in"></i></a>
                         <a class="social-icon" href="https://github.com/MilanTripkovic"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </section>
             <hr class="m-0" />
 
-            <!-- Work Experience-->  
-            <!-- Work Experience-->
-        <section class="resume-section" id="workexperience">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Work Experience</h2>
-
-                <!-- Najnovije iskustvo: Paid Internship -->
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Paid Software Developer Internship</h3>
-                        <div class="subheading mb-3">RT-RK</div>
-                        <ul>
-                            <li>Actively contributing to the <strong>open-sourcing process of the LAVA project</strong>, ensuring code quality and comprehensive documentation for public release.</li>
-                            <li>Identifying and <strong>resolving bugs within the GCC codebase</strong>, focused on improving compiler stability and performance for <strong>RISC-V</strong> architectures.</li>
-                            <li>Collaborating with senior engineers to maintain high standards in compiler development and system-level software.</li>
-                            <li>Gained deep experience in compiler optimization and low-level architecture-specific enhancements.</li>
-                        </ul>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">February 2026 - Present</span></div>
-                </div>
-            
-                <!-- Prethodno iskustvo: Internship -->
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Software Developer Internship</h3>
-                        <div class="subheading mb-3">RT-RK</div>
-                        <ul>
-                            <li>Worked on a research project focused on compiler optimization and architecture-specific enhancements.</li>
-                            <li>Designed and implemented an instruction scheduler for the <strong>Spacemit X60</strong> architecture within the <strong>GCC</strong> (GNU Compiler Collection) framework.</li>
-                            <li>Analyzed hardware <strong>pipeline stages</strong> to optimize instruction ordering and improve overall execution efficiency.</li>
-                            <li>Developed a deep understanding of instruction-level parallelism and hardware-software co-design.</li>
-                        </ul>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">September 2025 - February 2026</span></div>
-                </div>
-            
-            </div>
-        </section>
-            <hr class="m-0" />
-
-            <!-- Projects-->
-            <section class="resume-section" id="projects">
+            <!-- Work Experience (unchanged) -->
+            <section class="resume-section" id="workexperience">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Projects</h2>
-                    
-                    <!-- Project 3 -->
+                    <h2 class="mb-5">Work Experience</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">Metering Simulation System</h3>
-                            <div class="subheading mb-3">C#, .NET, WPF, MVVM</div>
+                            <h3 class="mb-0">Paid Software Developer Internship</h3>
+                            <div class="subheading mb-3">RT-RK</div>
                             <ul>
-                                <li>Developed a WPF desktop application for simulating and analyzing energy consumption measurement systems.</li>
-                                <li>Implemented real-time data generation and multiple visualization components (tabular display, graphs).</li>
-                                <li>Applied SOLID principles and MVVM pattern for maintainability.</li>
+                                <li>Actively contributing to the <strong>open-sourcing process of the LAVA project</strong>, ensuring code quality and comprehensive documentation for public release.</li>
+                                <li>Identifying and <strong>resolving bugs within the GCC codebase</strong>, focused on improving compiler stability and performance for <strong>RISC-V</strong> architectures.</li>
+                                <li>Collaborating with senior engineers to maintain high standards in compiler development and system-level software.</li>
+                                <li>Gained deep experience in compiler optimization and low-level architecture-specific enhancements.</li>
                             </ul>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">2024</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary">February 2026 - Present</span></div>
                     </div>
-
-                    <!-- Project 2 -->
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">Healthcare Information System</h3>
-                            <div class="subheading mb-3">C#, .NET, ASP.NET Web API, HTML, CSS, JavaScript</div>
+                            <h3 class="mb-0">Software Developer Internship</h3>
+                            <div class="subheading mb-3">RT-RK</div>
                             <ul>
-                                <li>Web application for managing appointments and therapies with different user roles (doctors, patients, admins).</li>
-                                <li>Integrated data validation, filtering, and sorting for optimized user experience.</li>
+                                <li>Worked on a research project focused on compiler optimization and architecture-specific enhancements.</li>
+                                <li>Designed and implemented an instruction scheduler for the <strong>Spacemit X60</strong> architecture within the <strong>GCC</strong> (GNU Compiler Collection) framework.</li>
+                                <li>Analyzed hardware <strong>pipeline stages</strong> to optimize instruction ordering and improve overall execution efficiency.</li>
+                                <li>Developed a deep understanding of instruction-level parallelism and hardware-software co-design.</li>
                             </ul>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">2023</span></div>
-                    </div>
-
-                    <!-- Project 1 -->
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Data Library Management System</h3>
-                            <div class="subheading mb-3">C#, .NET, WPF</div>
-                            <ul>
-                                <li>Developed a WPF desktop application for book catalog management and rental history tracking.</li>
-                                <li>Designed a structured interface with three main tabs for seamless navigation.</li>
-                            </ul>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">2023</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary">September 2025 - February 2026</span></div>
                     </div>
                 </div>
             </section>
             <hr class="m-0" />
 
-            <!-- Education-->
+            <!-- ═══════════════════════════════════════
+                 PROJECTS — nova sekcija sa karticama
+            ════════════════════════════════════════ -->
+            <section class="resume-section" id="projects">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Projects</h2>
+
+                    <div class="projects-grid">
+
+                        <!-- Kartica 1 -->
+                        <div class="project-card" onclick="openProjModal('metering')">
+                            <div class="card-inner">
+                                <div class="card-year">2024</div>
+                                <div class="card-title">Metering Simulation System</div>
+                                <div class="card-desc">WPF desktop app for simulating and analyzing energy consumption measurement systems with real-time data visualization.</div>
+                                <div class="card-tags">
+                                    <span class="card-tag">C#</span>
+                                    <span class="card-tag">.NET</span>
+                                    <span class="card-tag">WPF</span>
+                                    <span class="card-tag">MVVM</span>
+                                </div>
+                                <div class="card-cta">
+                                    <span>View project</span>
+                                    <div class="cta-arrow">
+                                        <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
+                                            <path d="M2 5h6M5 2l3 3-3 3" stroke="#12121a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Kartica 2 -->
+                        <div class="project-card" onclick="openProjModal('healthcare')">
+                            <div class="card-inner">
+                                <div class="card-year">2023</div>
+                                <div class="card-title">Healthcare Information System</div>
+                                <div class="card-desc">Full-stack web app for managing appointments and therapies with role-based access for doctors, patients and admins.</div>
+                                <div class="card-tags">
+                                    <span class="card-tag">ASP.NET</span>
+                                    <span class="card-tag">C#</span>
+                                    <span class="card-tag">JavaScript</span>
+                                    <span class="card-tag">REST API</span>
+                                </div>
+                                <div class="card-cta">
+                                    <span>View project</span>
+                                    <div class="cta-arrow">
+                                        <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
+                                            <path d="M2 5h6M5 2l3 3-3 3" stroke="#12121a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Kartica 3 -->
+                        <div class="project-card" onclick="openProjModal('library')">
+                            <div class="card-inner">
+                                <div class="card-year">2023</div>
+                                <div class="card-title">Data Library Management System</div>
+                                <div class="card-desc">WPF desktop app for book catalog management, rental history tracking, and structured data navigation.</div>
+                                <div class="card-tags">
+                                    <span class="card-tag">C#</span>
+                                    <span class="card-tag">.NET</span>
+                                    <span class="card-tag">WPF</span>
+                                    <span class="card-tag">SQL</span>
+                                </div>
+                                <div class="card-cta">
+                                    <span>View project</span>
+                                    <div class="cta-arrow">
+                                        <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
+                                            <path d="M2 5h6M5 2l3 3-3 3" stroke="#12121a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+
+            <!-- Education (unchanged) -->
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Education</h2>
@@ -160,7 +469,7 @@
             </section>
             <hr class="m-0" />
 
-            <!-- Skills-->
+            <!-- Skills (unchanged) -->
             <section class="resume-section" id="skills">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Technical Skills</h2>
@@ -174,7 +483,6 @@
                         <li class="list-inline-item"><i class="fab fa-git-alt" title="Git"></i></li>
                         <li class="list-inline-item"><i class="fab fa-docker" title="Docker"></i></li>
                     </ul>
-                    
                     <div class="row">
                         <div class="col-md-6">
                             <div class="subheading mb-2">Languages</div>
@@ -189,34 +497,156 @@
             </section>
             <hr class="m-0" />
 
-            <!-- Languages -->
+            <!-- Languages (unchanged) -->
             <section class="resume-section" id="languages">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Languages</h2>
                     <ul class="fa-ul mb-0">
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check text-primary"></i></span>
-                            Serbian (Native)
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check text-primary"></i></span>
-                            English (Intermediate)
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check text-primary"></i></span>
-                            German (Basic)
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check text-primary"></i></span>
-                            French (Basic)
-                        </li>
+                        <li><span class="fa-li"><i class="fas fa-check text-primary"></i></span>Serbian (Native)</li>
+                        <li><span class="fa-li"><i class="fas fa-check text-primary"></i></span>English (Intermediate)</li>
+                        <li><span class="fa-li"><i class="fas fa-check text-primary"></i></span>German (Basic)</li>
+                        <li><span class="fa-li"><i class="fas fa-check text-primary"></i></span>French (Basic)</li>
                     </ul>
                 </div>
             </section>
+
+        </div><!-- /container -->
+
+        <!-- PROJECT MODAL -->
+        <div class="proj-modal-overlay" id="projModalOverlay" onclick="closeProjModalOnBg(event)">
+            <div class="proj-modal" id="projModal">
+                <div class="modal-grad-bar" id="projGradBar"></div>
+                <button class="proj-modal-close" onclick="closeProjModal()">×</button>
+                <div class="proj-modal-body">
+
+                    <div class="modal-gallery">
+                        <div class="gallery-main" id="projGalleryMain">
+                            <div class="gallery-placeholder">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M3 9h18M9 21V9"/>
+                                </svg>
+                                <span>Add screenshot</span>
+                            </div>
+                        </div>
+                        <div class="gallery-side">
+                            <div class="gallery-thumb">
+                                <div class="gallery-placeholder" style="font-size:10px;">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                                        <path d="m21 15-5-5L5 21"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="gallery-thumb">
+                                <div class="gallery-placeholder" style="font-size:10px;">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                                        <path d="m21 15-5-5L5 21"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-year-lbl" id="projYear"></div>
+                    <div class="modal-title" id="projTitle"></div>
+                    <p class="modal-desc" id="projDesc"></p>
+
+                    <div class="modal-sec-label">Tech Stack</div>
+                    <div class="modal-tags" id="projTags"></div>
+
+                    <div class="modal-sec-label">Key Features</div>
+                    <ul class="modal-highlights" id="projHighlights"></ul>
+
+                    <div class="modal-actions">
+                        <a class="btn-proj-ghost" id="projGithub" href="#" target="_blank">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.745 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                            </svg>
+                            View on GitHub
+                        </a>
+                        <button class="btn-proj-close" onclick="closeProjModal()">Close</button>
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <!-- Bootstrap core JS-->
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+
+        <script>
+        const projData = {
+            metering: {
+                year: '2024',
+                title: 'Metering Simulation System',
+                desc: 'A WPF desktop application built to simulate and analyze energy consumption measurement systems. Designed with a strong focus on clean architecture and real-time responsiveness.',
+                tags: ['C#', '.NET 6', 'WPF', 'MVVM', 'XAML'],
+                highlights: [
+                    'Real-time data generation with configurable simulation parameters',
+                    'Multiple visualization components: tabular display and interactive graphs',
+                    'Applied SOLID principles and MVVM pattern for maintainability and testability',
+                    'Custom charting components for time-series energy consumption data',
+                ],
+                github: 'https://github.com/MilanTripkovic',
+                grad: 'linear-gradient(90deg, #bd5d38, #c47d56, #d4956e)',
+            },
+            healthcare: {
+                year: '2023',
+                title: 'Healthcare Information System',
+                desc: 'A full-stack web application for managing medical appointments and treatment therapies. Features a multi-role system supporting doctors, patients, and administrators with distinct views and permissions.',
+                tags: ['C#', 'ASP.NET Core', 'Web API', 'HTML', 'CSS', 'JavaScript', 'SQL'],
+                highlights: [
+                    'Role-based access control for doctors, patients, and administrators',
+                    'Appointment scheduling with conflict detection',
+                    'Data validation, filtering, and sorting for optimized user experience',
+                    'RESTful Web API with structured JSON responses',
+                ],
+                github: 'https://github.com/MilanTripkovic',
+                grad: 'linear-gradient(90deg, #bd5d38, #a04e2f, #7c3b22)',
+            },
+            library: {
+                year: '2023',
+                title: 'Data Library Management System',
+                desc: 'A WPF desktop application for managing a book catalog and tracking rental history. Built with a clean three-tab interface for seamless navigation between catalog, rentals, and user management.',
+                tags: ['C#', '.NET', 'WPF', 'XAML', 'SQL', 'Entity Framework'],
+                highlights: [
+                    'Book catalog management with search and filtering capabilities',
+                    'Rental history tracking with due date notifications',
+                    'Three-tab structured interface for intuitive navigation',
+                    'Persistent data storage with Entity Framework ORM',
+                ],
+                github: 'https://github.com/MilanTripkovic',
+                grad: 'linear-gradient(90deg, #a04e2f, #bd5d38, #c47d56)',
+            },
+        };
+
+        function openProjModal(id) {
+            const p = projData[id];
+            document.getElementById('projYear').textContent = p.year;
+            document.getElementById('projTitle').textContent = p.title;
+            document.getElementById('projDesc').textContent = p.desc;
+            document.getElementById('projGradBar').style.background = p.grad;
+            document.getElementById('projGithub').href = p.github;
+            document.getElementById('projTags').innerHTML = p.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+            document.getElementById('projHighlights').innerHTML = p.highlights.map(h => `<li>${h}</li>`).join('');
+            document.getElementById('projModalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjModal() {
+            document.getElementById('projModalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeProjModalOnBg(e) {
+            if (e.target === document.getElementById('projModalOverlay')) closeProjModal();
+        }
+
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProjModal(); });
+        </script>
     </body>
 </html>
