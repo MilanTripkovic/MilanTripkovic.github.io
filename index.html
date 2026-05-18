@@ -544,6 +544,15 @@
                             </div>
                         </div>
 
+                        <div class="project-card" onclick="openProjModal('library')">
+                            <div class="card-inner">
+                                <div class="card-year">2026</div>
+                                <div class="card-title">Bloons tower defence 6 mod upgrading</div>
+                                <div class="card-desc">Infrastructure and communication protocols project.</div>
+                                <div class="card-tags"><span class="card-tag">C#</span><span class="card-tag">.NET</span></div>
+                                <div class="card-cta"><span>View project</span><div class="cta-arrow"><svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -642,7 +651,7 @@
                         color: #bd5d38;
                         border: 0.5px solid rgba(189,93,56,0.25);
                     }
-                    .badge-lava {
+                    .badge-linux-kernel {
                         background: rgba(52,58,64,0.08);
                         color: #495057;
                         border: 0.5px solid rgba(52,58,64,0.2);
@@ -724,6 +733,36 @@ data provided by the Camel CDR project.</div>
                                 <div class="patch-desc"> This patch introduces a new RTL pattern for bset + sext + or and
 Test cases for this pattern.</div>
                                 <a class="patch-link" href="https://patchwork.sourceware.org/project/gcc/patch/AM6PR08MB42800F36C7E67FEA00FCF6EFA93C2@AM6PR08MB4280.eurprd08.prod.outlook.com/" target="_blank">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                    View patch / commit
+                                </a>
+                            </div>
+                            <div class="patch-date">2026</div>
+                        </li>
+                        <li class="patch-item">
+                            <span class="patch-badge badge-linux-kernel">linux</span>
+                            <div class="patch-body">
+                                <div class="patch-title">riscv: lib: add optimized memcmp() and extend KUnit tests</div>
+                                <div class="patch-desc"> Series introduces an optimized RISC-V memcmp() implementation 
+and extends the KUnit string tests to cover both functional correctness 
+and benchmarking of memcmp().</div>
+                                <a class="patch-link" href="https://lore.kernel.org/all/20260518131407.1026049-1-milant2002@gmail.com/" target="_blank">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                    View patch / commit
+                                </a>
+                            </div>
+                            <div class="patch-date">2026</div>
+                        </li>
+                        <li class="patch-item">
+                            <span class="patch-badge badge-linux-kernel">linux</span>
+                            <div class="patch-body">
+                                <div class="patch-title">riscv: lib: add strrchr() zbb implementation</div>
+                                <div class="patch-desc"> Add an zbb assembly implementation of strrchr() for RISC-V.
+The implementation uses ZBB bit-manipulation instructions such as
+orc.b, ctz, and clz to process multiple bytes per iteration and
+significantly improve performance for longer strings compared to
+the generic byte-by-byte implementation.</div>
+                                <a class="patch-link" href="https://lore.kernel.org/all/20260515144956.1389792-1-milant2002@gmail.com/" target="_blank">
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                                     View patch / commit
                                 </a>
@@ -848,7 +887,7 @@ Test cases for this pattern.</div>
                 grad: 'linear-gradient(90deg, #a04e2f, #bd5d38, #c47d56)',
             },
             quiz: {
-                year: '2026',
+                year: '2025',
                 title: 'KvizHub – Live Quiz Arena',
                 desc: 'A full-stack web application for taking quizzes and competing in real-time. Built as a university course project covering both a complete base platform and a live multiplayer extension with SignalR. Users can register, browse and filter quizzes, solve timed quizzes, track personal history, and compete live in synchronized rooms against other players.',
                 tags: ['ASP.NET Core', 'React', 'SignalR', 'JWT', 'BCrypt', 'PostgreSQL', 'Entity Framework', 'REST API', 'AutoMapper'],
