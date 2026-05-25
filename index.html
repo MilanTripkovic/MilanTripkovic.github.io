@@ -479,12 +479,12 @@
                         </div>
 
                         <!-- Cloud -->
-                        <div class="project-card" onclick="openProjModal('library')">
+                        <div class="project-card" onclick="openProjModal('cloud')">
                             <div class="card-inner">
-                                <div class="card-year">proveri godinu</div>
-                                <div class="card-title">Cloud Project</div>
-                                <div class="card-desc">Cloud computing project.</div>
-                                <div class="card-tags"><span class="card-tag">C#</span><span class="card-tag">.NET</span><span class="card-tag">Cloud</span></div>
+                                <div class="card-year">2025</div>
+                                <div class="card-title">Cloud StackOverflow Platform</div>
+                                <div class="card-desc">Azure cloud Q&A platform inspired by Stack Overflow, with Web/Worker Roles, queues, email notifications, health monitoring and availability dashboard.</div>
+                                <div class="card-tags"><span class="card-tag">C#</span><span class="card-tag">.NET</span><span class="card-tag">Azure</span><span class="card-tag">MVC</span><span class="card-tag">Queues</span></div>
                                 <div class="card-cta"><span>View project</span><div class="cta-arrow"><svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
                             </div>
                         </div>
@@ -912,6 +912,23 @@ the generic byte-by-byte implementation.</div>
                     'Controls treadmill and rowing machine ON/OFF switches through a dedicated control window',
                     'Monitors fitness center values such as calorie counter, load sensor and heart-rate monitors',
                     'Refreshes the interface after successful command writes and keeps displayed values synchronized with the RTU configuration',
+                ],
+                github: 'https://github.com/MilanTripkovic',
+                grad: 'linear-gradient(90deg, #bd5d38, #c47d56, #d4956e)',
+            },
+            cloud: {
+                year: '2025',
+                title: 'Cloud StackOverflow Platform',
+                desc: 'A cloud-based Q&A platform inspired by Stack Overflow. The system is split into multiple Azure roles and services: a Web Role for the main user-facing platform, Worker Roles for asynchronous email notifications and health monitoring, a separate health-status dashboard, and a console tool for managing alert email addresses.',
+                tags: ['C#', '.NET', 'ASP.NET MVC', 'Azure', 'Web Role', 'Worker Role', 'Queue', 'Table Storage', 'Blob Storage'],
+                highlights: [
+                    'StackOverflowService Web Role with user registration, login, profile editing, question posting, answers, voting, searching and sorting',
+                    'Question owners can edit/delete their own questions and choose the best answer',
+                    'NotificationService Worker Role processes accepted-answer messages from a queue and sends email notifications asynchronously',
+                    'HealthMonitoringService Worker Role periodically checks service availability and writes OK/NOT_OK results to Azure Table storage',
+                    'HealthStatusService visualizes availability for the last 3 hours using health-check data',
+                    'AdminToolsConsoleApp manages alert email addresses used when health checks fail',
+                    'Uses Azure storage components such as queues, tables and blobs to separate data, monitoring and background processing',
                 ],
                 github: 'https://github.com/MilanTripkovic',
                 grad: 'linear-gradient(90deg, #bd5d38, #c47d56, #d4956e)',
