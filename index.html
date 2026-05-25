@@ -457,12 +457,12 @@
                         </div>
 
                         <!-- SCADA -->
-                        <div class="project-card" onclick="openProjModal('library')">
+                        <div class="project-card" onclick="openProjModal('scada')">
                             <div class="card-inner">
-                                <div class="card-year">proveri godinu</div>
-                                <div class="card-title">SCADA System</div>
-                                <div class="card-desc">Supervisory control and data acquisition desktop application.</div>
-                                <div class="card-tags"><span class="card-tag">C#</span><span class="card-tag">.NET</span><span class="card-tag">WPF</span></div>
+                                <div class="card-year">2024</div>
+                                <div class="card-title">Fitness Center SCADA System</div>
+                                <div class="card-desc">SCADA desktop system for monitoring and controlling fitness equipment over Modbus/TCP, with periodic RTU polling and real-time UI updates.</div>
+                                <div class="card-tags"><span class="card-tag">C#</span><span class="card-tag">.NET</span><span class="card-tag">WPF</span><span class="card-tag">SCADA</span><span class="card-tag">TCP</span></div>
                                 <div class="card-cta"><span>View project</span><div class="cta-arrow"><svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
                             </div>
                         </div>
@@ -897,6 +897,21 @@ the generic byte-by-byte implementation.</div>
                     'Content form with image preview and RichTextBox editor supporting Bold, Italic, Underline, font, color and size changes',
                     'Separate read-only detail view for visitors and editable add/edit form for admins',
                     'Per-field validation, delete confirmation, user feedback, and XML/RTF file storage',
+                ],
+                github: 'https://github.com/MilanTripkovic',
+                grad: 'linear-gradient(90deg, #bd5d38, #c47d56, #d4956e)',
+            },
+            scada: {
+                year: '2024',
+                title: 'Fitness Center SCADA System',
+                desc: 'A SCADA desktop application for a smart fitness center, focused on monitoring health and equipment parameters and controlling gym machines through an RTU connection. The system communicates over TCP, reads configured digital and analog points, and keeps the user interface synchronized with the latest field values.',
+                tags: ['C#', '.NET', 'WPF', 'SCADA', 'Modbus/TCP', 'RTU', 'Data Polling'],
+                highlights: [
+                    'Configured RTU slave communication using TCP transport and the required simulator/dCom settings',
+                    'Periodically reads digital signals every 2 seconds and analog measurements every 4 seconds',
+                    'Controls treadmill and rowing machine ON/OFF switches through a dedicated control window',
+                    'Monitors fitness center values such as calorie counter, load sensor and heart-rate monitors',
+                    'Refreshes the interface after successful command writes and keeps displayed values synchronized with the RTU configuration',
                 ],
                 github: 'https://github.com/MilanTripkovic',
                 grad: 'linear-gradient(90deg, #bd5d38, #c47d56, #d4956e)',
