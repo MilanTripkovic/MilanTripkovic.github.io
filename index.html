@@ -534,12 +534,12 @@
                         </div>
 
                         <!-- IKP -->
-                        <div class="project-card" onclick="openProjModal('library')">
+                        <div class="project-card" onclick="openProjModal('ikp')">
                             <div class="card-inner">
-                                <div class="card-year">proveri godinu</div>
-                                <div class="card-title">IKP</div>
-                                <div class="card-desc">Infrastructure and communication protocols project.</div>
-                                <div class="card-tags"><span class="card-tag">C#</span><span class="card-tag">.NET</span></div>
+                                <div class="card-year">2025</div>
+                                <div class="card-title">Heap Manager</div>
+                                <div class="card-desc">Multithreaded memory management system with First Fit/Next Fit allocation, a synchronized circular buffer, thread pool processing, TCP client/server communication and monitoring.</div>
+                                <div class="card-tags"><span class="card-tag">C</span><span class="card-tag">Threads</span><span class="card-tag">TCP</span><span class="card-tag">Heap</span><span class="card-tag">Sync</span></div>
                                 <div class="card-cta"><span>View project</span><div class="cta-arrow"><svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
                             </div>
                         </div>
@@ -929,6 +929,24 @@ the generic byte-by-byte implementation.</div>
                     'HealthStatusService visualizes availability for the last 3 hours using health-check data',
                     'AdminToolsConsoleApp manages alert email addresses used when health checks fail',
                     'Uses Azure storage components such as queues, tables and blobs to separate data, monitoring and background processing',
+                ],
+                github: 'https://github.com/MilanTripkovic',
+                grad: 'linear-gradient(90deg, #bd5d38, #c47d56, #d4956e)',
+            },
+            ikp: {
+                year: '2025',
+                title: 'Heap Manager - Memory Management System',
+                desc: 'A multithreaded memory management system developed for the Industrial Communication Protocols course. The project simulates a heap manager used by multiple clients, supports concurrent memory allocation and deallocation, and uses synchronization mechanisms to keep shared resources safe under load.',
+                tags: ['C/C++', 'Multithreading', 'TCP Server', 'Thread Pool', 'Circular Buffer', 'Mutex', 'Semaphores', 'First Fit', 'Next Fit'],
+                highlights: [
+                    'Implemented allocate and free operations for dynamically managed memory segments',
+                    'Supported First Fit and Next Fit allocation strategies, with dynamic switching based on heap state',
+                    'Used a synchronized circular buffer for communication between client requests and worker threads',
+                    'Built a fixed-size thread pool to process allocation/deallocation tasks efficiently without repeatedly creating threads',
+                    'Added a server component that accepts requests from multiple clients and forwards them to the heap manager',
+                    'Reduced contention using independent heap zones with mutex-based synchronization',
+                    'Implemented monitoring for buffer state, active threads, processed requests, peak thread usage and maximum buffer occupancy',
+                    'Validated the system with stress tests including 1000+ requests and multiple clients sending requests in parallel without deadlocks',
                 ],
                 github: 'https://github.com/MilanTripkovic',
                 grad: 'linear-gradient(90deg, #bd5d38, #c47d56, #d4956e)',
