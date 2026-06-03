@@ -328,7 +328,7 @@
                         +381 61-575-7777 · 
                         <a href="mailto:milantripkovicposlovni@gmail.com">milantripkovicposlovni@gmail.com</a>
                     </div>
-                    <p class="lead mb-5">Student at the Faculty of Technical Sciences in Novi Sad, specializing in Applied Software Engineering. Passionate about practical projects that improve both technical and teamwork skills. Open to internships to gain hands-on experience and contribute to innovative solutions.</p>
+                    <p class="lead mb-5">Student at the Faculty of Technical Sciences in Novi Sad, specializing in Applied Software Engineering. Passionate about practical projects that improve both technical and teamwork skills. Open to work to gain hands-on experience and contribute to innovative solutions.</p>
                     <div class="social-icons">
                         <a class="social-icon" href="https://linkedin.com/in/milan-tripkovic"><i class="fab fa-linkedin-in"></i></a>
                         <a class="social-icon" href="https://github.com/MilanTripkovic"><i class="fab fa-github"></i></a>
@@ -468,12 +468,12 @@
                         </div>
 
                         <!-- Smart Grid Data Models -->
-                        <div class="project-card" onclick="openProjModal('library')">
+                        <div class="project-card" onclick="openProjModal('smartgrid')">
                             <div class="card-inner">
-                                <div class="card-year">2025</div>
+                                <div class="card-year">2026</div>
                                 <div class="card-title">Smart Grid Data Models</div>
-                                <div class="card-desc">Data modelling and management system for smart grid infrastructure.</div>
-                                <div class="card-tags"><span class="card-tag">C#</span><span class="card-tag">.NET</span><span class="card-tag">SQL</span></div>
+                                <div class="card-desc">WPF/WCF application for querying CIM-based network models through GDA and SPARQL 1.1, with RDF mapping, example queries and net.tcp service communication.</div>
+                                <div class="card-tags"><span class="card-tag">C#</span><span class="card-tag">.NET</span><span class="card-tag">WPF</span><span class="card-tag">WCF</span><span class="card-tag">SPARQL</span></div>
                                 <div class="card-cta"><span>View project</span><div class="cta-arrow"><svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
                             </div>
                         </div>
@@ -514,7 +514,7 @@
                         <!-- DRS -->
                         <div class="project-card" onclick="openProjModal('library')">
                             <div class="card-inner">
-                                <div class="card-year">proveri godinu</div>
+                                <div class="card-year">2025</div>
                                 <div class="card-title">DRS</div>
                                 <div class="card-desc">Distributed systems project.</div>
                                 <div class="card-tags"><span class="card-tag">C#</span><span class="card-tag">.NET</span></div>
@@ -525,9 +525,9 @@
                         <!-- OIB -->
                         <div class="project-card" onclick="openProjModal('library')">
                             <div class="card-inner">
-                                <div class="card-year">proveri godinu</div>
+                                <div class="card-year">2025/div>
                                 <div class="card-title">OIB</div>
-                                <div class="card-desc">Object-oriented information systems project.</div>
+                                <div class="card-desc">Osnove informacione bezbednosti.</div>
                                 <div class="card-tags"><span class="card-tag">C#</span><span class="card-tag">.NET</span><span class="card-tag">SQL</span></div>
                                 <div class="card-cta"><span>View project</span><div class="cta-arrow"><svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
                             </div>
@@ -574,28 +574,292 @@
             </section>
             <hr class="m-0" />
 
-            <!-- Skills (unchanged) -->
+            <!-- Skills (enhanced) -->
             <section class="resume-section" id="skills">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Technical Skills</h2>
-                    <div class="subheading mb-3">Programming Languages & Tools</div>
-                    <ul class="list-inline dev-icons">
-                        <li class="list-inline-item"><i class="fab fa-html5" title="HTML5"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-css3-alt" title="CSS3"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-js-square" title="JavaScript"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-react" title="React"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-python" title="Python"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-git-alt" title="Git"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-docker" title="Docker"></i></li>
+
+                    <style>
+                    #skills .tech-icon-list {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 1rem 1.15rem;
+                        margin-bottom: 2rem;
+                    }
+
+                    #skills .tech-icon-list .list-inline-item {
+                        width: 82px;
+                        min-height: 76px;
+                        margin: 0;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 7px;
+                        border-radius: 12px;
+                        border: 1px solid #e9ecef;
+                        background: #fff;
+                        box-shadow: 0 8px 22px rgba(52, 58, 64, 0.04);
+                        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+                    }
+
+                    #skills .tech-icon-list .list-inline-item:hover {
+                        transform: translateY(-4px);
+                        box-shadow: 0 14px 32px rgba(189, 93, 56, 0.13);
+                        border-color: rgba(189, 93, 56, 0.35);
+                    }
+
+                    #skills .tech-icon-list i {
+                        font-size: 1.95rem;
+                        color: #bd5d38;
+                        line-height: 1;
+                    }
+
+                    #skills .tech-icon-list span {
+                        font-size: 10px;
+                        font-weight: 700;
+                        font-family: 'Saira Extra Condensed', sans-serif;
+                        letter-spacing: 0.07em;
+                        text-transform: uppercase;
+                        color: #495057;
+                        text-align: center;
+                        line-height: 1.15;
+                    }
+
+                    #skills .skills-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                        gap: 1rem;
+                        margin-top: 0.5rem;
+                    }
+
+                    #skills .skill-card {
+                        border: 1px solid #e9ecef;
+                        border-radius: 14px;
+                        padding: 1.15rem 1.2rem;
+                        background: #ffffff;
+                        box-shadow: 0 8px 24px rgba(52, 58, 64, 0.04);
+                    }
+
+                    #skills .skill-card-title {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        margin-bottom: 0.8rem;
+                        font-family: 'Saira Extra Condensed', sans-serif;
+                        font-size: 1.05rem;
+                        font-weight: 700;
+                        letter-spacing: 0.06em;
+                        text-transform: uppercase;
+                        color: #343a40;
+                    }
+
+                    #skills .skill-card-title i {
+                        color: #bd5d38;
+                        font-size: 1rem;
+                    }
+
+                    #skills .skill-pills {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 6px;
+                    }
+
+                    #skills .skill-pill {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 5px;
+                        padding: 4px 10px;
+                        border-radius: 100px;
+                        border: 1px solid rgba(189, 93, 56, 0.22);
+                        background: rgba(189, 93, 56, 0.08);
+                        color: #5f463d;
+                        font-size: 11px;
+                        font-weight: 700;
+                        font-family: 'Saira Extra Condensed', sans-serif;
+                        letter-spacing: 0.04em;
+                        text-transform: uppercase;
+                        line-height: 1.2;
+                    }
+
+                    #skills .skill-pill i {
+                        color: #bd5d38;
+                        font-size: 10px;
+                    }
+                    </style>
+
+                    <div class="subheading mb-3">Main Technologies & Tools</div>
+                    <ul class="list-inline dev-icons tech-icon-list">
+                        <li class="list-inline-item"><i class="fas fa-hashtag" title="C#"></i><span>C#</span></li>
+                        <li class="list-inline-item"><i class="fab fa-microsoft" title=".NET / WPF"></i><span>.NET / WPF</span></li>
+                        <li class="list-inline-item"><i class="fas fa-server" title="ASP.NET"></i><span>ASP.NET</span></li>
+                        <li class="list-inline-item"><i class="fab fa-react" title="React"></i><span>React</span></li>
+                        <li class="list-inline-item"><i class="fab fa-js-square" title="JavaScript"></i><span>JavaScript</span></li>
+                        <li class="list-inline-item"><i class="fab fa-html5" title="HTML5"></i><span>HTML5</span></li>
+                        <li class="list-inline-item"><i class="fab fa-css3-alt" title="CSS3"></i><span>CSS3</span></li>
+                        <li class="list-inline-item"><i class="fas fa-database" title="SQL / PostgreSQL"></i><span>SQL</span></li>
+                        <li class="list-inline-item"><i class="fab fa-python" title="Python"></i><span>Python</span></li>
+                        <li class="list-inline-item"><i class="fas fa-code" title="C / C++"></i><span>C / C++</span></li>
+                        <li class="list-inline-item"><i class="fas fa-brain" title="Julia / ML"></i><span>Julia / ML</span></li>
+                        <li class="list-inline-item"><i class="fas fa-cloud" title="Azure"></i><span>Azure</span></li>
+                        <li class="list-inline-item"><i class="fas fa-network-wired" title="SCADA / TCP"></i><span>SCADA / TCP</span></li>
+                        <li class="list-inline-item"><i class="fas fa-sitemap" title="CIM / RDF / SPARQL"></i><span>CIM / RDF</span></li>
+                        <li class="list-inline-item"><i class="fas fa-microchip" title="RISC-V / Assembly"></i><span>RISC-V</span></li>
+                        <li class="list-inline-item"><i class="fab fa-linux" title="Linux Kernel"></i><span>Linux</span></li>
+                        <li class="list-inline-item"><i class="fas fa-gears" title="GCC"></i><span>GCC</span></li>
+                        <li class="list-inline-item"><i class="fab fa-git-alt" title="Git"></i><span>Git</span></li>
+                        <li class="list-inline-item"><i class="fab fa-github" title="GitHub"></i><span>GitHub</span></li>
+                        <li class="list-inline-item"><i class="fab fa-docker" title="Docker"></i><span>Docker</span></li>
                     </ul>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="subheading mb-2">Languages</div>
-                            <p>C#, SQL (PostgreSQL), Python, JavaScript, HTML/CSS, C/C++, XAML, Java, Julia, Assembly</p>
+
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-card-title"><i class="fas fa-code"></i>Programming Languages</div>
+                            <div class="skill-pills">
+                                <span class="skill-pill"><i class="fas fa-hashtag"></i>C#</span>
+                                <span class="skill-pill"><i class="fas fa-code"></i>C</span>
+                                <span class="skill-pill"><i class="fas fa-code"></i>C++</span>
+                                <span class="skill-pill"><i class="fab fa-python"></i>Python</span>
+                                <span class="skill-pill"><i class="fab fa-js-square"></i>JavaScript</span>
+                                <span class="skill-pill"><i class="fab fa-html5"></i>HTML</span>
+                                <span class="skill-pill"><i class="fab fa-css3-alt"></i>CSS</span>
+                                <span class="skill-pill"><i class="fas fa-database"></i>SQL</span>
+                                <span class="skill-pill"><i class="fas fa-file-code"></i>XAML</span>
+                                <span class="skill-pill"><i class="fab fa-java"></i>Java</span>
+                                <span class="skill-pill"><i class="fas fa-brain"></i>Julia</span>
+                                <span class="skill-pill"><i class="fas fa-microchip"></i>Assembly</span>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="subheading mb-2">Frameworks & Libraries</div>
-                            <p>ASP.NET (Core, MVC), React, Flask, WPF, Entity Framework Core, SQLAlchemy, AutoMapper</p>
+
+                        <div class="skill-card">
+                            <div class="skill-card-title"><i class="fab fa-microsoft"></i>.NET, Web & UI</div>
+                            <div class="skill-pills">
+                                <span class="skill-pill"><i class="fab fa-microsoft"></i>.NET</span>
+                                <span class="skill-pill"><i class="fab fa-microsoft"></i>.NET 6</span>
+                                <span class="skill-pill"><i class="fab fa-microsoft"></i>.NET Framework 4.8</span>
+                                <span class="skill-pill"><i class="fas fa-desktop"></i>WPF</span>
+                                <span class="skill-pill"><i class="fas fa-file-code"></i>XAML</span>
+                                <span class="skill-pill"><i class="fas fa-layer-group"></i>MVVM</span>
+                                <span class="skill-pill"><i class="fas fa-server"></i>ASP.NET Core</span>
+                                <span class="skill-pill"><i class="fas fa-window-restore"></i>ASP.NET MVC</span>
+                                <span class="skill-pill"><i class="fas fa-network-wired"></i>WCF</span>
+                                <span class="skill-pill"><i class="fab fa-react"></i>React</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-card-title"><i class="fas fa-server"></i>Backend & APIs</div>
+                            <div class="skill-pills">
+                                <span class="skill-pill"><i class="fas fa-code-branch"></i>REST API</span>
+                                <span class="skill-pill"><i class="fas fa-code-branch"></i>Web API</span>
+                                <span class="skill-pill"><i class="fas fa-bolt"></i>SignalR</span>
+                                <span class="skill-pill"><i class="fas fa-key"></i>JWT</span>
+                                <span class="skill-pill"><i class="fas fa-lock"></i>BCrypt</span>
+                                <span class="skill-pill"><i class="fas fa-random"></i>AutoMapper</span>
+                                <span class="skill-pill"><i class="fas fa-database"></i>Entity Framework Core</span>
+                                <span class="skill-pill"><i class="fas fa-database"></i>SQLAlchemy</span>
+                                <span class="skill-pill"><i class="fab fa-python"></i>Flask</span>
+                                <span class="skill-pill"><i class="fas fa-envelope"></i>SMTP / Email</span>
+                                <span class="skill-pill"><i class="fas fa-cubes"></i>DTOs</span>
+                                <span class="skill-pill"><i class="fas fa-plug"></i>Dependency Injection</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-card-title"><i class="fas fa-database"></i>Data, Models & Storage</div>
+                            <div class="skill-pills">
+                                <span class="skill-pill"><i class="fas fa-database"></i>PostgreSQL</span>
+                                <span class="skill-pill"><i class="fas fa-database"></i>SQL</span>
+                                <span class="skill-pill"><i class="fas fa-file-code"></i>XML</span>
+                                <span class="skill-pill"><i class="fas fa-file-alt"></i>RTF</span>
+                                <span class="skill-pill"><i class="fas fa-sitemap"></i>CIM</span>
+                                <span class="skill-pill"><i class="fas fa-file-code"></i>CIM/XML</span>
+                                <span class="skill-pill"><i class="fas fa-project-diagram"></i>XMI</span>
+                                <span class="skill-pill"><i class="fas fa-sitemap"></i>RDF</span>
+                                <span class="skill-pill"><i class="fas fa-sitemap"></i>RDFS</span>
+                                <span class="skill-pill"><i class="fas fa-search"></i>SPARQL 1.1</span>
+                                <span class="skill-pill"><i class="fas fa-link"></i>GDA</span>
+                                <span class="skill-pill"><i class="fas fa-barcode"></i>ModelCode</span>
+                                <span class="skill-pill"><i class="fas fa-book"></i>dotNetRDF</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-card-title"><i class="fas fa-cloud"></i>Cloud & Distributed Systems</div>
+                            <div class="skill-pills">
+                                <span class="skill-pill"><i class="fas fa-cloud"></i>Azure</span>
+                                <span class="skill-pill"><i class="fas fa-globe"></i>Web Role</span>
+                                <span class="skill-pill"><i class="fas fa-gears"></i>Worker Role</span>
+                                <span class="skill-pill"><i class="fas fa-list"></i>Azure Queues</span>
+                                <span class="skill-pill"><i class="fas fa-table"></i>Table Storage</span>
+                                <span class="skill-pill"><i class="fas fa-database"></i>Blob Storage</span>
+                                <span class="skill-pill"><i class="fas fa-heartbeat"></i>Health Monitoring</span>
+                                <span class="skill-pill"><i class="fas fa-chart-line"></i>Availability Dashboard</span>
+                                <span class="skill-pill"><i class="fas fa-terminal"></i>Console Tools</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-card-title"><i class="fas fa-network-wired"></i>Industrial & Communication Protocols</div>
+                            <div class="skill-pills">
+                                <span class="skill-pill"><i class="fas fa-industry"></i>SCADA</span>
+                                <span class="skill-pill"><i class="fas fa-network-wired"></i>Modbus/TCP</span>
+                                <span class="skill-pill"><i class="fas fa-microchip"></i>RTU</span>
+                                <span class="skill-pill"><i class="fas fa-network-wired"></i>TCP</span>
+                                <span class="skill-pill"><i class="fas fa-network-wired"></i>net.tcp</span>
+                                <span class="skill-pill"><i class="fas fa-sync-alt"></i>Data Polling</span>
+                                <span class="skill-pill"><i class="fas fa-sliders-h"></i>dCom / Simulator</span>
+                                <span class="skill-pill"><i class="fas fa-desktop"></i>Real-time UI Updates</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-card-title"><i class="fas fa-memory"></i>Systems, Low-level & Concurrency</div>
+                            <div class="skill-pills">
+                                <span class="skill-pill"><i class="fas fa-code-branch"></i>Multithreading</span>
+                                <span class="skill-pill"><i class="fas fa-diagram-project"></i>Thread Pool</span>
+                                <span class="skill-pill"><i class="fas fa-retweet"></i>Circular Buffer</span>
+                                <span class="skill-pill"><i class="fas fa-lock"></i>Mutexes</span>
+                                <span class="skill-pill"><i class="fas fa-lock"></i>Semaphores</span>
+                                <span class="skill-pill"><i class="fas fa-memory"></i>Heap Manager</span>
+                                <span class="skill-pill"><i class="fas fa-search"></i>First Fit</span>
+                                <span class="skill-pill"><i class="fas fa-search"></i>Next Fit</span>
+                                <span class="skill-pill"><i class="fas fa-server"></i>Client/Server</span>
+                                <span class="skill-pill"><i class="fas fa-tachometer-alt"></i>Stress Testing</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-card-title"><i class="fab fa-linux"></i>Open Source & Tooling</div>
+                            <div class="skill-pills">
+                                <span class="skill-pill"><i class="fab fa-git-alt"></i>Git</span>
+                                <span class="skill-pill"><i class="fab fa-github"></i>GitHub</span>
+                                <span class="skill-pill"><i class="fab fa-docker"></i>Docker</span>
+                                <span class="skill-pill"><i class="fab fa-linux"></i>Linux</span>
+                                <span class="skill-pill"><i class="fab fa-linux"></i>Linux Kernel</span>
+                                <span class="skill-pill"><i class="fas fa-gears"></i>GCC</span>
+                                <span class="skill-pill"><i class="fas fa-microchip"></i>RISC-V</span>
+                                <span class="skill-pill"><i class="fas fa-microchip"></i>ZBB</span>
+                                <span class="skill-pill"><i class="fas fa-microchip"></i>Zbc / CLMUL</span>
+                                <span class="skill-pill"><i class="fas fa-code"></i>Assembly</span>
+                                <span class="skill-pill"><i class="fas fa-project-diagram"></i>Instruction Scheduling</span>
+                                <span class="skill-pill"><i class="fas fa-tachometer-alt"></i>Compiler Optimization</span>
+                                <span class="skill-pill"><i class="fas fa-vial"></i>KUnit</span>
+                                <span class="skill-pill"><i class="fas fa-envelope-open-text"></i>Patchwork / Lore</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-card-title"><i class="fas fa-brain"></i>Machine Learning & Analysis</div>
+                            <div class="skill-pills">
+                                <span class="skill-pill"><i class="fas fa-brain"></i>Neural Networks</span>
+                                <span class="skill-pill"><i class="fas fa-chart-line"></i>Linear Regression</span>
+                                <span class="skill-pill"><i class="fas fa-cube"></i>Flux.jl</span>
+                                <span class="skill-pill"><i class="fas fa-square-root-alt"></i>RMSE</span>
+                                <span class="skill-pill"><i class="fas fa-calculator"></i>MSE</span>
+                                <span class="skill-pill"><i class="fas fa-calculator"></i>MAE</span>
+                                <span class="skill-pill"><i class="fas fa-percent"></i>MAPE</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -912,6 +1176,22 @@ the generic byte-by-byte implementation.</div>
                     'Controls treadmill and rowing machine ON/OFF switches through a dedicated control window',
                     'Monitors fitness center values such as calorie counter, load sensor and heart-rate monitors',
                     'Refreshes the interface after successful command writes and keeps displayed values synchronized with the RTU configuration',
+                ],
+                github: 'https://github.com/MilanTripkovic',
+                grad: 'linear-gradient(90deg, #bd5d38, #c47d56, #d4956e)',
+            },
+            smartgrid: {
+                year: '2026',
+                title: 'Smart Grid Data Models - SPARQL over GDA',
+                desc: 'A WPF client and WCF Network Model Service extension for working with CIM-based smart grid data. The project adds a SPARQL tab to the existing GDA client, maps GDA entities and properties into an RDF graph, and executes SPARQL 1.1 queries over the network model using dotNetRDF/Leviathan while keeping communication on the existing net.tcp service channel.',
+                tags: ['C#', '.NET Framework 4.8', 'WPF', 'WCF', 'GDA', 'CIM', 'RDFS', 'RDF', 'SPARQL 1.1', 'dotNetRDF'],
+                highlights: [
+                    'Built a WPF GUI extension with a dedicated SPARQL tab, 20 predefined example queries, query validation, async execution and result display',
+                    'Extended the WCF/GDA contract with ExecuteSparqlQuery while reusing the existing net.tcp Network Model Service architecture',
+                    'Mapped CIM/GDA entities, ModelCode properties and references into RDF triples for SPARQL processing',
+                    'Implemented GdaSparqlEngine using dotNetRDF Leviathan to support SELECT, ASK, CONSTRUCT, DESCRIBE, FILTER, OPTIONAL, UNION, ORDER BY, LIMIT/OFFSET, GROUP BY and COUNT',
+                    'Added friendly Serbian error messages and a revert-to-last-successful-result workflow',
+                    'Worked with CIM profile concepts, RDFS, XMI, CIM/XML data import, adapter mapping, model codes and GDA methods such as GetExtent, GetValues and GetRelated',
                 ],
                 github: 'https://github.com/MilanTripkovic',
                 grad: 'linear-gradient(90deg, #bd5d38, #c47d56, #d4956e)',
