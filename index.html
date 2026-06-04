@@ -525,7 +525,7 @@
                         <!-- OIB -->
                         <div class="project-card" onclick="openProjModal('library')">
                             <div class="card-inner">
-                                <div class="card-year">2025/div>
+                                <div class="card-year">2025</div>
                                 <div class="card-title">OIB</div>
                                 <div class="card-desc">Osnove informacione bezbednosti.</div>
                                 <div class="card-tags"><span class="card-tag">C#</span><span class="card-tag">.NET</span><span class="card-tag">SQL</span></div>
@@ -557,7 +557,174 @@
                 </div>
             </section>
             <hr class="m-0" />
+            <section class="resume-section" id="opensource">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Open Source Contributions</h2>
 
+                    <style>
+                    .patch-list { list-style: none; padding: 0; margin: 0; }
+                    .patch-item {
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 1.25rem;
+                        padding: 1.1rem 0;
+                        border-bottom: 1px solid #f1f3f5;
+                    }
+                    .patch-item:last-child { border-bottom: none; }
+                    .patch-badge {
+                        flex-shrink: 0;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 5px;
+                        padding: 4px 12px;
+                        border-radius: 100px;
+                        font-size: 11px;
+                        font-weight: 700;
+                        font-family: 'Saira Extra Condensed', sans-serif;
+                        letter-spacing: 0.06em;
+                        text-transform: uppercase;
+                        white-space: nowrap;
+                        margin-top: 2px;
+                    }
+                    .badge-gcc {
+                        background: rgba(189,93,56,0.1);
+                        color: #bd5d38;
+                        border: 0.5px solid rgba(189,93,56,0.25);
+                    }
+                    .badge-linux-kernel {
+                        background: rgba(52,58,64,0.08);
+                        color: #495057;
+                        border: 0.5px solid rgba(52,58,64,0.2);
+                    }
+                    .patch-body { flex: 1; }
+                    .patch-title {
+                        font-family: 'Saira Extra Condensed', sans-serif;
+                        font-size: 1.1rem;
+                        font-weight: 700;
+                        color: #343a40;
+                        margin-bottom: 3px;
+                    }
+                    .patch-desc {
+                        font-size: 13.5px;
+                        color: #6c757d;
+                        line-height: 1.6;
+                        font-family: Muli, sans-serif;
+                        margin-bottom: 6px;
+                    }
+                    .patch-link {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 5px;
+                        font-size: 12px;
+                        font-family: 'Saira Extra Condensed', sans-serif;
+                        font-weight: 700;
+                        letter-spacing: 0.05em;
+                        text-transform: uppercase;
+                        color: #bd5d38;
+                        text-decoration: none;
+                    }
+                    .patch-link:hover { color: #a04e2f; text-decoration: underline; }
+                    .patch-date {
+                        flex-shrink: 0;
+                        font-size: 11px;
+                        color: #adb5bd;
+                        font-family: 'Saira Extra Condensed', sans-serif;
+                        letter-spacing: 0.05em;
+                        padding-top: 4px;
+                        white-space: nowrap;
+                    }
+                    </style>
+
+                    <ul class="patch-list">
+
+                        <li class="patch-item">
+                            <span class="patch-badge badge-gcc">GCC</span>
+                            <div class="patch-body">
+                                <div class="patch-title">Adjust clmul latency in Spacemit X60 scheduler model</div>
+                                <div class="patch-desc">This patch adjusts the instruction scheduling and cost model for the Zbc
+(CLMUL) extension on the Spacemit X60 core.</div>
+                                <a class="patch-link" href="https://github.com/gcc-mirror/gcc/commit/fa80b3972160804a0db1e9c3caa90edf603086a0" target="_blank">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                    View patch / commit
+                                </a>
+                            </div>
+                            <div class="patch-date">2025</div>
+                        </li>
+
+                        <li class="patch-item">
+                            <span class="patch-badge badge-gcc">GCC</span>
+                            <div class="patch-body">
+                                <div class="patch-title">RISC-V: Add vector cost model for Spacemit-X60</div>
+                                <div class="patch-desc">This patch implements a dedicated vector cost model for the Spacemit-X60
+core. The cost values are derived from micro-benchmarking
+data provided by the Camel CDR project.</div>
+                                <a class="patch-link" href="https://github.com/gcc-mirror/gcc/commit/2256ae77d4a398d0d46647e14943d705d26a68d2" target="_blank">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                    View patch / commit
+                                </a>
+                            </div>
+                            <div class="patch-date">2026</div>
+                        </li>
+<li class="patch-item">
+                            <span class="patch-badge badge-gcc">GCC</span>
+                            <div class="patch-body">
+                                <div class="patch-title">RISC-V: Add XuanTie C908 tuning and scheduler model</div>
+                                <div class="patch-desc">Add tuning definitions for the XuanTie C908 core, including a
+scalar scheduler model.</div>
+                                <a class="patch-link" href="https://github.com/gcc-mirror/gcc/commit/980ea5fb52417306c54cfeffb78743f26823d3dd" target="_blank">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                    View patch / commit
+                                </a>
+                            </div>
+                            <div class="patch-date">2026</div>
+                        </li>
+                        <li class="patch-item">
+                            <span class="patch-badge badge-gcc">GCC</span>
+                            <div class="patch-body">
+                                <div class="patch-title">RISC-V: Missed bit manipulation on RISC-V [PR123884]</div>
+                                <div class="patch-desc"> This patch introduces a new RTL pattern for bset + sext + or and
+Test cases for this pattern.</div>
+                                <a class="patch-link" href="https://patchwork.sourceware.org/project/gcc/patch/AM6PR08MB42800F36C7E67FEA00FCF6EFA93C2@AM6PR08MB4280.eurprd08.prod.outlook.com/" target="_blank">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                    View patch / commit
+                                </a>
+                            </div>
+                            <div class="patch-date">2026</div>
+                        </li>
+                        <li class="patch-item">
+                            <span class="patch-badge badge-linux-kernel">linux</span>
+                            <div class="patch-body">
+                                <div class="patch-title">riscv: lib: add optimized memcmp() and extend KUnit tests</div>
+                                <div class="patch-desc"> Series introduces an optimized RISC-V memcmp() implementation 
+and extends the KUnit string tests to cover both functional correctness 
+and benchmarking of memcmp().</div>
+                                <a class="patch-link" href="https://lore.kernel.org/all/20260518131407.1026049-1-milant2002@gmail.com/" target="_blank">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                    View patch / commit
+                                </a>
+                            </div>
+                            <div class="patch-date">2026</div>
+                        </li>
+                        <li class="patch-item">
+                            <span class="patch-badge badge-linux-kernel">linux</span>
+                            <div class="patch-body">
+                                <div class="patch-title">riscv: lib: add strrchr() zbb implementation</div>
+                                <div class="patch-desc"> Add an zbb assembly implementation of strrchr() for RISC-V.
+The implementation uses ZBB bit-manipulation instructions such as
+orc.b, ctz, and clz to process multiple bytes per iteration and
+significantly improve performance for longer strings compared to
+the generic byte-by-byte implementation.</div>
+                                <a class="patch-link" href="https://lore.kernel.org/all/20260515144956.1389792-1-milant2002@gmail.com/" target="_blank">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                    View patch / commit
+                                </a>
+                            </div>
+                            <div class="patch-date">2026</div>
+                        </li>
+
+                    </ul>
+                </div>
+            </section>
             <!-- Education (unchanged) -->
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
@@ -881,174 +1048,7 @@
             <hr class="m-0" />
 
             <!-- Open Source -->
-            <section class="resume-section" id="opensource">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">Open Source Contributions</h2>
 
-                    <style>
-                    .patch-list { list-style: none; padding: 0; margin: 0; }
-                    .patch-item {
-                        display: flex;
-                        align-items: flex-start;
-                        gap: 1.25rem;
-                        padding: 1.1rem 0;
-                        border-bottom: 1px solid #f1f3f5;
-                    }
-                    .patch-item:last-child { border-bottom: none; }
-                    .patch-badge {
-                        flex-shrink: 0;
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 5px;
-                        padding: 4px 12px;
-                        border-radius: 100px;
-                        font-size: 11px;
-                        font-weight: 700;
-                        font-family: 'Saira Extra Condensed', sans-serif;
-                        letter-spacing: 0.06em;
-                        text-transform: uppercase;
-                        white-space: nowrap;
-                        margin-top: 2px;
-                    }
-                    .badge-gcc {
-                        background: rgba(189,93,56,0.1);
-                        color: #bd5d38;
-                        border: 0.5px solid rgba(189,93,56,0.25);
-                    }
-                    .badge-linux-kernel {
-                        background: rgba(52,58,64,0.08);
-                        color: #495057;
-                        border: 0.5px solid rgba(52,58,64,0.2);
-                    }
-                    .patch-body { flex: 1; }
-                    .patch-title {
-                        font-family: 'Saira Extra Condensed', sans-serif;
-                        font-size: 1.1rem;
-                        font-weight: 700;
-                        color: #343a40;
-                        margin-bottom: 3px;
-                    }
-                    .patch-desc {
-                        font-size: 13.5px;
-                        color: #6c757d;
-                        line-height: 1.6;
-                        font-family: Muli, sans-serif;
-                        margin-bottom: 6px;
-                    }
-                    .patch-link {
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 5px;
-                        font-size: 12px;
-                        font-family: 'Saira Extra Condensed', sans-serif;
-                        font-weight: 700;
-                        letter-spacing: 0.05em;
-                        text-transform: uppercase;
-                        color: #bd5d38;
-                        text-decoration: none;
-                    }
-                    .patch-link:hover { color: #a04e2f; text-decoration: underline; }
-                    .patch-date {
-                        flex-shrink: 0;
-                        font-size: 11px;
-                        color: #adb5bd;
-                        font-family: 'Saira Extra Condensed', sans-serif;
-                        letter-spacing: 0.05em;
-                        padding-top: 4px;
-                        white-space: nowrap;
-                    }
-                    </style>
-
-                    <ul class="patch-list">
-
-                        <li class="patch-item">
-                            <span class="patch-badge badge-gcc">GCC</span>
-                            <div class="patch-body">
-                                <div class="patch-title">Adjust clmul latency in Spacemit X60 scheduler model</div>
-                                <div class="patch-desc">This patch adjusts the instruction scheduling and cost model for the Zbc
-(CLMUL) extension on the Spacemit X60 core.</div>
-                                <a class="patch-link" href="https://github.com/gcc-mirror/gcc/commit/fa80b3972160804a0db1e9c3caa90edf603086a0" target="_blank">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                    View patch / commit
-                                </a>
-                            </div>
-                            <div class="patch-date">2025</div>
-                        </li>
-
-                        <li class="patch-item">
-                            <span class="patch-badge badge-gcc">GCC</span>
-                            <div class="patch-body">
-                                <div class="patch-title">RISC-V: Add vector cost model for Spacemit-X60</div>
-                                <div class="patch-desc">This patch implements a dedicated vector cost model for the Spacemit-X60
-core. The cost values are derived from micro-benchmarking
-data provided by the Camel CDR project.</div>
-                                <a class="patch-link" href="https://github.com/gcc-mirror/gcc/commit/2256ae77d4a398d0d46647e14943d705d26a68d2" target="_blank">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                    View patch / commit
-                                </a>
-                            </div>
-                            <div class="patch-date">2026</div>
-                        </li>
-<li class="patch-item">
-                            <span class="patch-badge badge-gcc">GCC</span>
-                            <div class="patch-body">
-                                <div class="patch-title">RISC-V: Add XuanTie C908 tuning and scheduler model</div>
-                                <div class="patch-desc">Add tuning definitions for the XuanTie C908 core, including a
-scalar scheduler model.</div>
-                                <a class="patch-link" href="https://github.com/gcc-mirror/gcc/commit/980ea5fb52417306c54cfeffb78743f26823d3dd" target="_blank">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                    View patch / commit
-                                </a>
-                            </div>
-                            <div class="patch-date">2026</div>
-                        </li>
-                        <li class="patch-item">
-                            <span class="patch-badge badge-gcc">GCC</span>
-                            <div class="patch-body">
-                                <div class="patch-title">RISC-V: Missed bit manipulation on RISC-V [PR123884]</div>
-                                <div class="patch-desc"> This patch introduces a new RTL pattern for bset + sext + or and
-Test cases for this pattern.</div>
-                                <a class="patch-link" href="https://patchwork.sourceware.org/project/gcc/patch/AM6PR08MB42800F36C7E67FEA00FCF6EFA93C2@AM6PR08MB4280.eurprd08.prod.outlook.com/" target="_blank">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                    View patch / commit
-                                </a>
-                            </div>
-                            <div class="patch-date">2026</div>
-                        </li>
-                        <li class="patch-item">
-                            <span class="patch-badge badge-linux-kernel">linux</span>
-                            <div class="patch-body">
-                                <div class="patch-title">riscv: lib: add optimized memcmp() and extend KUnit tests</div>
-                                <div class="patch-desc"> Series introduces an optimized RISC-V memcmp() implementation 
-and extends the KUnit string tests to cover both functional correctness 
-and benchmarking of memcmp().</div>
-                                <a class="patch-link" href="https://lore.kernel.org/all/20260518131407.1026049-1-milant2002@gmail.com/" target="_blank">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                    View patch / commit
-                                </a>
-                            </div>
-                            <div class="patch-date">2026</div>
-                        </li>
-                        <li class="patch-item">
-                            <span class="patch-badge badge-linux-kernel">linux</span>
-                            <div class="patch-body">
-                                <div class="patch-title">riscv: lib: add strrchr() zbb implementation</div>
-                                <div class="patch-desc"> Add an zbb assembly implementation of strrchr() for RISC-V.
-The implementation uses ZBB bit-manipulation instructions such as
-orc.b, ctz, and clz to process multiple bytes per iteration and
-significantly improve performance for longer strings compared to
-the generic byte-by-byte implementation.</div>
-                                <a class="patch-link" href="https://lore.kernel.org/all/20260515144956.1389792-1-milant2002@gmail.com/" target="_blank">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                    View patch / commit
-                                </a>
-                            </div>
-                            <div class="patch-date">2026</div>
-                        </li>
-
-                    </ul>
-                </div>
-            </section>
 
         </div><!-- /container -->
 
