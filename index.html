@@ -212,16 +212,14 @@
                             </div>
                         </div>
 
-                        <div class="project-card" onclick="openProjModal('library')"> <!-- DRS TO-DO -->
+                        <div class="project-card" onclick="openProjModal('drs')"> <!-- DRS-->
                             <div class="card-inner">
                                 <div class="card-year">2025</div>
-                                <div class="card-title">DRS</div>
-                                <div class="card-desc">Distributed systems project.</div>
-                                <div class="card-tags"><span class="card-tag">C#</span><span class="card-tag">.NET</span></div>
-                                <div class="card-cta"><span>View project</span><div class="cta-arrow"><svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-                            </div>
+                                <div class="card-title">Social network</div>
+                                <div class="card-desc">Distributed real-time social network platform.. </div>
+                                <div class="card-tags"><span class="card-tag">React</span><span class="card-tag">C#</span><span class="card-tag">.NET</span><span class="card-tag">WebSocket</span><span class="card-tag">Distributed</span></div>
+                                <div class="card-cta"><span>View project</span><div class="cta-arrow"><svg width="9" height="9" viewBox="0 0 10 10" fill="none">        <path d="M2 5h6M5 2l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>    </svg></div></div></div>
                         </div>
-
                         <div class="project-card" onclick="openProjModal('library')"> <!-- OIB TO-DO -->
                             <div class="card-inner">
                                 <div class="card-year">2025</div>
@@ -814,7 +812,25 @@ generic byte-by-byte loop on systems without Zbb support.</div>
                 ],
                 github: 'https://github.com/MilanTripkovic',
                 grad: 'linear-gradient(90deg, #2d3436, #636e72, #74b9ff)',
-    },
+            },
+            drs: {
+                year: '2025',
+                title: 'DRS - Distributed Real-time Social Network',
+                desc: 'Full-stack social network application with real-time messaging, user interactions, and distributed architecture. React frontend with C# .NET backend.',
+                tags: ['React', 'C#', '.NET', 'WebSocket', 'Bootstrap', 'Distributed Systems'],
+                highlights: [
+                    'Full-stack distributed social network platform',
+                    'Real-time messaging system with Socket.IO WebSocket integration',
+                    'Modern React UI with Bootstrap responsive design and FontAwesome icons',
+                    'C# .NET backend with REST API and distributed architecture',
+                    'JWT-based authentication and secure token management',
+                    'User interactions: posts, comments, messaging, and social connections',
+                    'Scalable distributed systems design principles',
+                    'Interactive components with real-time data synchronization',
+                ],
+                github: 'https://github.com/MilanTripkovic',
+                grad: 'linear-gradient(90deg, #667eea, #764ba2, #f093fb)',
+            },
         };
 
         function openProjModal(id) {
