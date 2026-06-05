@@ -12,294 +12,11 @@
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
-
-        <style>
-        /* ── PROJECT CARDS ── */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.25rem;
-            margin-top: 1rem;
-        }
-
-        .project-card {
-            position: relative;
-            cursor: pointer;
-            border-radius: 14px;
-            padding: 2px;
-            background: linear-gradient(135deg, #bd5d38, #c47d56, #d4956e);
-            background-size: 200% 200%;
-            animation: gradShift 8s ease infinite;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-        }
-
-        .project-card:nth-child(2) {
-            background: linear-gradient(135deg, #bd5d38, #a04e2f, #7c3b22);
-            animation-delay: -2.5s;
-        }
-        .project-card:nth-child(3) {
-            background: linear-gradient(135deg, #a04e2f, #bd5d38, #c47d56);
-            animation-delay: -5s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 16px 40px rgba(189, 93, 56, 0.2);
-            text-decoration: none;
-        }
-
-        @keyframes gradShift {
-            0%   { background-position: 0% 50%; }
-            50%  { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .card-inner {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 1.5rem;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-inner::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at top left, rgba(189,93,56,0.04), transparent 60%);
-            pointer-events: none;
-        }
-
-        .card-year {
-            font-size: 10px;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: #adb5bd;
-            font-family: 'Saira Extra Condensed', sans-serif;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-title {
-            font-family: 'Saira Extra Condensed', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #343a40;
-            margin-bottom: 0.6rem;
-            line-height: 1.3;
-        }
-
-        .card-desc {
-            font-size: 13px;
-            color: #6c757d;
-            line-height: 1.65;
-            flex: 1;
-            margin-bottom: 1rem;
-            font-family: Muli, sans-serif;
-        }
-
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-bottom: 1rem;
-        }
-
-        .card-tag {
-            font-size: 10px;
-            font-weight: 700;
-            font-family: 'Saira Extra Condensed', sans-serif;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 3px 10px;
-            border-radius: 100px;
-            background: rgba(189,93,56,0.1);
-            color: #bd5d38;
-            border: 0.5px solid rgba(189,93,56,0.25);
-        }
-
-        .card-cta {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            font-weight: 700;
-            color: #bd5d38;
-            font-family: 'Saira Extra Condensed', sans-serif;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .cta-arrow {
-            width: 18px; height: 18px;
-            border-radius: 50%;
-            background: #bd5d38;
-            display: flex; align-items: center; justify-content: center;
-            transition: transform 0.2s ease;
-        }
-        .project-card:hover .cta-arrow { transform: translateX(3px); }
-
-        /* ── MODAL ── */
-        .proj-modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(52, 58, 64, 0.7);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-        }
-        .proj-modal-overlay.active { display: flex; animation: mfadeIn 0.2s ease; }
-
-        @keyframes mfadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes mslideUp { from { transform: translateY(24px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-        .proj-modal {
-            background: #ffffff;
-            border-radius: 16px;
-            border: 1px solid #dee2e6;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-            max-width: 700px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            animation: mslideUp 0.3s ease;
-            position: relative;
-        }
-
-        .proj-modal::-webkit-scrollbar { width: 4px; }
-        .proj-modal::-webkit-scrollbar-thumb { background: #dee2e6; border-radius: 2px; }
-
-        .modal-grad-bar {
-            height: 4px;
-            border-radius: 16px 16px 0 0;
-        }
-
-        .proj-modal-body { padding: 1.75rem 2rem 2.25rem; }
-
-        .proj-modal-close {
-            position: absolute;
-            top: 1rem; right: 1rem;
-            width: 34px; height: 34px;
-            border-radius: 50%;
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            color: #6c757d;
-            font-size: 18px;
-            cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: background 0.15s, color 0.15s;
-            line-height: 1;
-        }
-        .proj-modal-close:hover { background: #e9ecef; color: #343a40; }
-
-        .modal-gallery {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 6px;
-            margin-bottom: 1.5rem;
-            border-radius: 10px;
-            overflow: hidden;
-            aspect-ratio: 16/7;
-        }
-
-        .gallery-main { background: #f8f9fa; border-radius: 8px 0 0 8px; overflow: hidden; border: 1px solid #e9ecef; }
-        .gallery-side { display: flex; flex-direction: column; gap: 6px; }
-        .gallery-thumb { flex: 1; background: #f8f9fa; border-radius: 4px; overflow: hidden; border: 1px solid #e9ecef; }
-
-        .gallery-placeholder {
-            width: 100%; height: 100%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            gap: 6px; color: #adb5bd; font-size: 11px;
-            font-family: Muli, sans-serif; letter-spacing: 0.04em;
-            text-align: center; padding: 0.75rem;
-        }
-
-        .gallery-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-        .modal-year-lbl {
-            font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-            color: #adb5bd; font-family: 'Saira Extra Condensed', sans-serif; margin-bottom: 0.3rem;
-        }
-
-        .modal-title {
-            font-family: 'Saira Extra Condensed', sans-serif;
-            font-size: 2rem; font-weight: 700;
-            color: #343a40; margin-bottom: 0.5rem; line-height: 1.1;
-        }
-
-        .modal-desc {
-            font-size: 14px; color: #6c757d; line-height: 1.7;
-            margin-bottom: 1.3rem; font-family: Muli, sans-serif;
-        }
-
-        .modal-sec-label {
-            font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-            color: #adb5bd; font-family: 'Saira Extra Condensed', sans-serif;
-            margin-bottom: 0.55rem; font-weight: 700;
-        }
-
-        .modal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.2rem; }
-
-        .modal-tag {
-            font-size: 11px; padding: 4px 12px; border-radius: 100px;
-            background: #f8f9fa; color: #495057;
-            border: 1px solid #dee2e6;
-            font-family: 'Saira Extra Condensed', sans-serif;
-            letter-spacing: 0.05em; font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .modal-highlights { list-style: none; padding: 0; margin-bottom: 1.5rem; }
-
-        .modal-highlights li {
-            font-size: 13.5px; color: #6c757d; line-height: 1.65;
-            padding: 0.4rem 0 0.4rem 1.1rem; position: relative;
-            border-bottom: 1px solid #f1f3f5;
-            font-family: Muli, sans-serif;
-        }
-        .modal-highlights li:last-child { border-bottom: none; }
-        .modal-highlights li::before {
-            content: '›'; position: absolute; left: 0;
-            color: #bd5d38; font-size: 16px; top: 0.25rem; font-weight: 700;
-        }
-
-        .modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-
-        .btn-proj-ghost {
-            display: inline-flex; align-items: center; gap: 7px;
-            padding: 9px 18px; border-radius: 8px;
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            color: #495057; font-size: 13px; font-weight: 700;
-            font-family: 'Saira Extra Condensed', sans-serif;
-            letter-spacing: 0.06em; text-transform: uppercase;
-            text-decoration: none; cursor: pointer;
-            transition: background 0.15s, border-color 0.15s;
-        }
-        .btn-proj-ghost:hover { background: #e9ecef; border-color: #ced4da; color: #343a40; text-decoration: none; }
-
-        .btn-proj-close {
-            display: inline-flex; align-items: center; gap: 7px;
-            padding: 9px 18px; border-radius: 8px;
-            background: #bd5d38;
-            border: none; color: white; font-size: 13px; font-weight: 700;
-            font-family: 'Saira Extra Condensed', sans-serif;
-            letter-spacing: 0.06em; text-transform: uppercase;
-            cursor: pointer; transition: background 0.15s;
-        }
-        .btn-proj-close:hover { background: #a04e2f; }
-        </style>
+        <link href="css/customcss.css" rel="stylesheet" />
     </head>
     <body id="page-top">
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav"> <!-- Navigation -->
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg-none">Milan Tripković</span>
                 <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg" alt="..." /></span>
@@ -320,8 +37,7 @@
 
         <div class="container-fluid p-0">
 
-            <!-- About (unchanged) -->
-            <section class="resume-section" id="about">
+            <section class="resume-section" id="about"> <!-- About -->
                 <div class="resume-section-content">
                     <h1 class="mb-0">Milan <span class="text-primary">Tripkovic</span></h1>
                     <div class="subheading mb-5">
@@ -337,8 +53,7 @@
             </section>
             <hr class="m-0" />
 
-            <!-- Work Experience (unchanged) -->
-            <section class="resume-section" id="workexperience">
+            <section class="resume-section" id="workexperience"> <!-- Work Experience -->
                 <div class="resume-section-content">
                     <h2 class="mb-5">Work Experience</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
@@ -371,11 +86,11 @@
             </section>
             <hr class="m-0" />
 
-            <!-- PROJECTS -->
-            <section class="resume-section" id="projects">
+            <section class="resume-section" id="projects"> <!-- PROJECTS -->
                 <div class="resume-section-content">
                     <h2 class="mb-5">Projects</h2>
                     <div class="projects-grid">
+
                         <div class="project-card" onclick="openProjModal('metering')"> <!-- HCI 1 -->
                             <div class="card-inner">
                                 <div class="card-year">2024</div>
@@ -536,88 +251,15 @@
                                 <div class="card-cta"><span>View project</span><div class="cta-arrow"><svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>
             <hr class="m-0" />
-            <section class="resume-section" id="opensource">
+
+            <section class="resume-section" id="opensource"> <!-- Open Source -->
                 <div class="resume-section-content">
                     <h2 class="mb-5">Open Source Contributions</h2>
-
-                    <style>
-                    .patch-list { list-style: none; padding: 0; margin: 0; }
-                    .patch-item {
-                        display: flex;
-                        align-items: flex-start;
-                        gap: 1.25rem;
-                        padding: 1.1rem 0;
-                        border-bottom: 1px solid #f1f3f5;
-                    }
-                    .patch-item:last-child { border-bottom: none; }
-                    .patch-badge {
-                        flex-shrink: 0;
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 5px;
-                        padding: 4px 12px;
-                        border-radius: 100px;
-                        font-size: 11px;
-                        font-weight: 700;
-                        font-family: 'Saira Extra Condensed', sans-serif;
-                        letter-spacing: 0.06em;
-                        text-transform: uppercase;
-                        white-space: nowrap;
-                        margin-top: 2px;
-                    }
-                    .badge-gcc {
-                        background: rgba(189,93,56,0.1);
-                        color: #bd5d38;
-                        border: 0.5px solid rgba(189,93,56,0.25);
-                    }
-                    .badge-linux-kernel {
-                        background: rgba(52,58,64,0.08);
-                        color: #495057;
-                        border: 0.5px solid rgba(52,58,64,0.2);
-                    }
-                    .patch-body { flex: 1; }
-                    .patch-title {
-                        font-family: 'Saira Extra Condensed', sans-serif;
-                        font-size: 1.1rem;
-                        font-weight: 700;
-                        color: #343a40;
-                        margin-bottom: 3px;
-                    }
-                    .patch-desc {
-                        font-size: 13.5px;
-                        color: #6c757d;
-                        line-height: 1.6;
-                        font-family: Muli, sans-serif;
-                        margin-bottom: 6px;
-                    }
-                    .patch-link {
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 5px;
-                        font-size: 12px;
-                        font-family: 'Saira Extra Condensed', sans-serif;
-                        font-weight: 700;
-                        letter-spacing: 0.05em;
-                        text-transform: uppercase;
-                        color: #bd5d38;
-                        text-decoration: none;
-                    }
-                    .patch-link:hover { color: #a04e2f; text-decoration: underline; }
-                    .patch-date {
-                        flex-shrink: 0;
-                        font-size: 11px;
-                        color: #adb5bd;
-                        font-family: 'Saira Extra Condensed', sans-serif;
-                        letter-spacing: 0.05em;
-                        padding-top: 4px;
-                        white-space: nowrap;
-                    }
-                    </style>
-
                     <ul class="patch-list">
 
                         <li class="patch-item"> <!-- GCC Adjust clmul PATCH -->
@@ -723,12 +365,11 @@ generic byte-by-byte loop on systems without Zbb support.</div>
                             </div>
                             <div class="patch-date">2026</div>
                         </li>
-
                     </ul>
                 </div>
             </section>
-            <!-- Education (unchanged) -->
-            <section class="resume-section" id="education">
+
+            <section class="resume-section" id="education"> <!-- Education -->
                 <div class="resume-section-content">
                     <h2 class="mb-5">Education</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
@@ -743,121 +384,11 @@ generic byte-by-byte loop on systems without Zbb support.</div>
             </section>
             <hr class="m-0" />
 
-            <!-- Skills (enhanced) -->
-            <section class="resume-section" id="skills">
+            <section class="resume-section" id="skills"> <!-- Skills -->
                 <div class="resume-section-content">
                     <h2 class="mb-5">Technical Skills</h2>
 
-                    <style>
-                    #skills .tech-icon-list {
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 1rem 1.15rem;
-                        margin-bottom: 2rem;
-                    }
-
-                    #skills .tech-icon-list .list-inline-item {
-                        width: 82px;
-                        min-height: 76px;
-                        margin: 0;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        gap: 7px;
-                        border-radius: 12px;
-                        border: 1px solid #e9ecef;
-                        background: #fff;
-                        box-shadow: 0 8px 22px rgba(52, 58, 64, 0.04);
-                        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-                    }
-
-                    #skills .tech-icon-list .list-inline-item:hover {
-                        transform: translateY(-4px);
-                        box-shadow: 0 14px 32px rgba(189, 93, 56, 0.13);
-                        border-color: rgba(189, 93, 56, 0.35);
-                    }
-
-                    #skills .tech-icon-list i {
-                        font-size: 1.95rem;
-                        color: #bd5d38;
-                        line-height: 1;
-                    }
-
-                    #skills .tech-icon-list span {
-                        font-size: 10px;
-                        font-weight: 700;
-                        font-family: 'Saira Extra Condensed', sans-serif;
-                        letter-spacing: 0.07em;
-                        text-transform: uppercase;
-                        color: #495057;
-                        text-align: center;
-                        line-height: 1.15;
-                    }
-
-                    #skills .skills-grid {
-                        display: grid;
-                        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-                        gap: 1rem;
-                        margin-top: 0.5rem;
-                    }
-
-                    #skills .skill-card {
-                        border: 1px solid #e9ecef;
-                        border-radius: 14px;
-                        padding: 1.15rem 1.2rem;
-                        background: #ffffff;
-                        box-shadow: 0 8px 24px rgba(52, 58, 64, 0.04);
-                    }
-
-                    #skills .skill-card-title {
-                        display: flex;
-                        align-items: center;
-                        gap: 8px;
-                        margin-bottom: 0.8rem;
-                        font-family: 'Saira Extra Condensed', sans-serif;
-                        font-size: 1.05rem;
-                        font-weight: 700;
-                        letter-spacing: 0.06em;
-                        text-transform: uppercase;
-                        color: #343a40;
-                    }
-
-                    #skills .skill-card-title i {
-                        color: #bd5d38;
-                        font-size: 1rem;
-                    }
-
-                    #skills .skill-pills {
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 6px;
-                    }
-
-                    #skills .skill-pill {
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 5px;
-                        padding: 4px 10px;
-                        border-radius: 100px;
-                        border: 1px solid rgba(189, 93, 56, 0.22);
-                        background: rgba(189, 93, 56, 0.08);
-                        color: #5f463d;
-                        font-size: 11px;
-                        font-weight: 700;
-                        font-family: 'Saira Extra Condensed', sans-serif;
-                        letter-spacing: 0.04em;
-                        text-transform: uppercase;
-                        line-height: 1.2;
-                    }
-
-                    #skills .skill-pill i {
-                        color: #bd5d38;
-                        font-size: 10px;
-                    }
-                    </style>
-
-                    <div class="subheading mb-3">Main Technologies & Tools</div>
+                    <div class="subheading mb-3">Main Technologies &amp; Tools</div>
                     <ul class="list-inline dev-icons tech-icon-list">
                         <li class="list-inline-item"><i class="fas fa-hashtag" title="C#"></i><span>C#</span></li>
                         <li class="list-inline-item"><i class="fab fa-microsoft" title=".NET / WPF"></i><span>.NET / WPF</span></li>
@@ -901,7 +432,7 @@ generic byte-by-byte loop on systems without Zbb support.</div>
                         </div>
 
                         <div class="skill-card">
-                            <div class="skill-card-title"><i class="fab fa-microsoft"></i>.NET, Web & UI</div>
+                            <div class="skill-card-title"><i class="fab fa-microsoft"></i>.NET, Web &amp; UI</div>
                             <div class="skill-pills">
                                 <span class="skill-pill"><i class="fab fa-microsoft"></i>.NET</span>
                                 <span class="skill-pill"><i class="fab fa-microsoft"></i>.NET 6</span>
@@ -917,7 +448,7 @@ generic byte-by-byte loop on systems without Zbb support.</div>
                         </div>
 
                         <div class="skill-card">
-                            <div class="skill-card-title"><i class="fas fa-server"></i>Backend & APIs</div>
+                            <div class="skill-card-title"><i class="fas fa-server"></i>Backend &amp; APIs</div>
                             <div class="skill-pills">
                                 <span class="skill-pill"><i class="fas fa-code-branch"></i>REST API</span>
                                 <span class="skill-pill"><i class="fas fa-code-branch"></i>Web API</span>
@@ -935,7 +466,7 @@ generic byte-by-byte loop on systems without Zbb support.</div>
                         </div>
 
                         <div class="skill-card">
-                            <div class="skill-card-title"><i class="fas fa-database"></i>Data, Models & Storage</div>
+                            <div class="skill-card-title"><i class="fas fa-database"></i>Data, Models &amp; Storage</div>
                             <div class="skill-pills">
                                 <span class="skill-pill"><i class="fas fa-database"></i>PostgreSQL</span>
                                 <span class="skill-pill"><i class="fas fa-database"></i>SQL</span>
@@ -954,7 +485,7 @@ generic byte-by-byte loop on systems without Zbb support.</div>
                         </div>
 
                         <div class="skill-card">
-                            <div class="skill-card-title"><i class="fas fa-cloud"></i>Cloud & Distributed Systems</div>
+                            <div class="skill-card-title"><i class="fas fa-cloud"></i>Cloud &amp; Distributed Systems</div>
                             <div class="skill-pills">
                                 <span class="skill-pill"><i class="fas fa-cloud"></i>Azure</span>
                                 <span class="skill-pill"><i class="fas fa-globe"></i>Web Role</span>
@@ -969,7 +500,7 @@ generic byte-by-byte loop on systems without Zbb support.</div>
                         </div>
 
                         <div class="skill-card">
-                            <div class="skill-card-title"><i class="fas fa-network-wired"></i>Industrial & Communication Protocols</div>
+                            <div class="skill-card-title"><i class="fas fa-network-wired"></i>Industrial &amp; Communication Protocols</div>
                             <div class="skill-pills">
                                 <span class="skill-pill"><i class="fas fa-industry"></i>SCADA</span>
                                 <span class="skill-pill"><i class="fas fa-network-wired"></i>Modbus/TCP</span>
@@ -983,7 +514,7 @@ generic byte-by-byte loop on systems without Zbb support.</div>
                         </div>
 
                         <div class="skill-card">
-                            <div class="skill-card-title"><i class="fas fa-memory"></i>Systems, Low-level & Concurrency</div>
+                            <div class="skill-card-title"><i class="fas fa-memory"></i>Systems, Low-level &amp; Concurrency</div>
                             <div class="skill-pills">
                                 <span class="skill-pill"><i class="fas fa-code-branch"></i>Multithreading</span>
                                 <span class="skill-pill"><i class="fas fa-diagram-project"></i>Thread Pool</span>
@@ -999,7 +530,7 @@ generic byte-by-byte loop on systems without Zbb support.</div>
                         </div>
 
                         <div class="skill-card">
-                            <div class="skill-card-title"><i class="fab fa-linux"></i>Open Source & Tooling</div>
+                            <div class="skill-card-title"><i class="fab fa-linux"></i>Open Source &amp; Tooling</div>
                             <div class="skill-pills">
                                 <span class="skill-pill"><i class="fab fa-git-alt"></i>Git</span>
                                 <span class="skill-pill"><i class="fab fa-github"></i>GitHub</span>
@@ -1019,7 +550,7 @@ generic byte-by-byte loop on systems without Zbb support.</div>
                         </div>
 
                         <div class="skill-card">
-                            <div class="skill-card-title"><i class="fas fa-brain"></i>Machine Learning & Analysis</div>
+                            <div class="skill-card-title"><i class="fas fa-brain"></i>Machine Learning &amp; Analysis</div>
                             <div class="skill-pills">
                                 <span class="skill-pill"><i class="fas fa-brain"></i>Neural Networks</span>
                                 <span class="skill-pill"><i class="fas fa-chart-line"></i>Linear Regression</span>
@@ -1035,8 +566,7 @@ generic byte-by-byte loop on systems without Zbb support.</div>
             </section>
             <hr class="m-0" />
 
-            <!-- Languages (unchanged) -->
-            <section class="resume-section" id="languages">
+            <section class="resume-section" id="languages"> <!-- Languages -->
                 <div class="resume-section-content">
                     <h2 class="mb-5">Languages</h2>
                     <ul class="fa-ul mb-0">
@@ -1049,13 +579,9 @@ generic byte-by-byte loop on systems without Zbb support.</div>
             </section>
             <hr class="m-0" />
 
-            <!-- Open Source -->
+        </div>
 
-
-        </div><!-- /container -->
-
-        <!-- PROJECT MODAL -->
-        <div class="proj-modal-overlay" id="projModalOverlay" onclick="closeProjModalOnBg(event)">
+        <div class="proj-modal-overlay" id="projModalOverlay" onclick="closeProjModalOnBg(event)"><!-- PROJECT MODAL -->
             <div class="proj-modal" id="projModal">
                 <div class="modal-grad-bar" id="projGradBar"></div>
                 <button class="proj-modal-close" onclick="closeProjModal()">×</button>
@@ -1113,8 +639,8 @@ generic byte-by-byte loop on systems without Zbb support.</div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="js/scripts.js"></script>
-
-        <script>
+        <!-- Za projekte tabovi -->
+        <script>  
         const projData = {
             metering: {
                 year: '2024',
@@ -1254,8 +780,8 @@ generic byte-by-byte loop on systems without Zbb support.</div>
                 github: 'https://github.com/MilanTripkovic',
                 grad: 'linear-gradient(90deg, #bd5d38, #c47d56, #d4956e)',
             },
-             quiz: {
-            year: '2025',
+            quiz: {
+                year: '2025',
                 title: 'KvizHub – Live Quiz Arena',
                 desc: 'A full-stack web application for taking quizzes and competing in real-time. Built as a university course project covering both a complete base platform and a live multiplayer extension with SignalR. Users can register, browse and filter quizzes, solve timed quizzes, track personal history, and compete live in synchronized rooms against other players.',
                 tags: ['ASP.NET Core', 'React', 'SignalR', 'JWT', 'BCrypt', 'PostgreSQL', 'Entity Framework', 'REST API', 'AutoMapper'],
